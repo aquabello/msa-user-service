@@ -5,4 +5,4 @@ $ openssl rand -hex 64
 
 ### Authenticate (인증)
 
-### Authentization (인가)
+### Authorization (인가)
