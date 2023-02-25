@@ -1,0 +1,41 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mariadb://localhost:3306/test
+    username: test
+    password: test
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        use_sql_comments: false
+
+# Log
+logging:
+  level:
+    # com.nhn.cloudhost: trace # log4j 로그 개발서버는: debug, 운영은: info
+    org.springframework: error
+    org.hibernate.SQL: debug
+    org.apache.coyote.http11: debug # HTTP PRINT
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+greeting:
+  message: Welcome to the User Controller
