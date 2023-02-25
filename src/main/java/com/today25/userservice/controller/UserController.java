@@ -3,11 +3,14 @@ package com.today25.userservice.controller;
 import com.today25.userservice.service.UserService;
 import com.today25.userservice.vo.Greeting;
 import com.today25.userservice.vo.RequestUser;
+import com.today25.userservice.vo.ResponseUser;
 import com.today25.userservice.vo.UserDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -38,15 +41,19 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public String createUser(@RequestBody RequestUser requestUser) {
+    public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser requestUser) {
+
+        // TODO: 회원 중복체크
 
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        UserDto userDto = modelMapper.map(requestUser, UserDto.class);
 
+        UserDto userDto = modelMapper.map(requestUser, UserDto.class);
         userService.createUser(userDto);
 
-        return "Create User Method is called";
+        ResponseUser responseUser = modelMapper.map(userDto, ResponseUser.class);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
 
 
     }

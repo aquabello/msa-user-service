@@ -6,7 +6,6 @@ import com.today25.userservice.repository.UserRepository;
 import com.today25.userservice.vo.UserDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +32,6 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(userEntity);
 
-        return null;
+        return mapper.map(userEntity, UserDto.class);
     }
 }
