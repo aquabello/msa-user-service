@@ -1,5 +1,6 @@
-package com.today25.userservice.vo;
+package com.today25.userservice.dto;
 
+import com.today25.userservice.vo.ResponseOrder;
 import lombok.Data;
 
 import java.util.Date;

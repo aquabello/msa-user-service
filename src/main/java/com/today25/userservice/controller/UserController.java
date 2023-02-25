@@ -6,7 +6,7 @@ import com.today25.userservice.service.UserService;
 import com.today25.userservice.vo.Greeting;
 import com.today25.userservice.vo.RequestUser;
 import com.today25.userservice.vo.ResponseUser;
-import com.today25.userservice.vo.UserDto;
+import com.today25.userservice.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
 
     private Environment env;
