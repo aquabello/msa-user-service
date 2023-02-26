@@ -38,7 +38,19 @@ eureka:
 greeting:
   message: Welcome to the User Service
 
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+
 # JWT -> config-server
 #token:
 #  expiration_time: 86400000
 #  secret: 611c94a633cadd552aa47e164541c3c47f419ff5250783bea2b435ef0b75f25e895f966c290004bd97249e26089e75e8aff922b412a14059468dc28e97c1219e
+
+
+
+
+

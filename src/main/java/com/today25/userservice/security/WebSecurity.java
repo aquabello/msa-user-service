@@ -37,8 +37,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("192.168.123.123") // 인증된 IP만 실행가능 (API GATEWAY)
+//                .hasIpAddress("192.168.123.123") // 인증된 IP만 실행가능 (WIFI API GATEWAY)
+                .hasIpAddress("192.168.123.180") // 인증된 IP만 실행가능 (LAN API GATEWAY)
                 .and()
                 .addFilter(getAuthenticationFilter());
 
