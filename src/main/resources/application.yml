@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: user-service
+  rabbitmp:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   datasource:
     url: jdbc:mariadb://localhost:3306/test
     username: test
@@ -43,7 +48,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans
+        include: refresh, health, beans, busrefresh
 
 # JWT -> config-server
 #token:
